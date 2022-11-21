@@ -17,7 +17,8 @@ public class Conditionals {
 		double height = input.nextDouble();
 		double weight = input.nextDouble();
 		final double bmi = weight / (height * height);
-
+		//asking for input and making the calculation 
+		
 		if (bmi < 18.5) {
 			System.out.println("Your bmi is " + (Math.round(bmi)) + " you are underweight");
 		}
@@ -33,7 +34,7 @@ public class Conditionals {
 		} else {
 			System.out.println("Your bmi is " + (Math.round(bmi)) + " you are extreme Obese");
 		}
-
+		//using conditionals to define their bmi
 		System.out.println("--------------------------------");
 		System.out.println("Assignment Two Part One Task Two");
 
@@ -42,7 +43,7 @@ public class Conditionals {
 		System.out.println("Enter a word to shift");
 		String word = input.nextLine();
 		word = input.nextLine();
-
+		//asking for input
 		String ciphertext = "";
 
 		char alphabet;
@@ -57,6 +58,7 @@ public class Conditionals {
 					alphabet = (char) (alphabet + 'a' - 'z' - 1);
 				}
 				ciphertext = ciphertext + alphabet;
+				//we do use if for to making only lower case
 			}
 
 			else if (alphabet >= 'A' && alphabet <= 'Z') {
@@ -68,6 +70,7 @@ public class Conditionals {
 			} else {
 				ciphertext = ciphertext + alphabet;
 			}
+			//we do use if for to making only Upper case 
 
 		}
 		System.out.println(ciphertext);
@@ -77,8 +80,7 @@ public class Conditionals {
 
 		System.out.println("Enter a number between 1 and 20");
 		long num = input.nextLong();
-		// after 20 long element does not help me and the number converts to negative
-		// that's why i used BigInteger
+		// on the task document it said that use long element for number and ask user to input between 1 and 20. but on example output it was saying that ask the user for input between 1 and 25. long is not useful to calculate after 20. I needed to use BigInteger.
 
 		while (num < 0 || num > 20) 
 		{
@@ -86,11 +88,11 @@ public class Conditionals {
 				System.out.println("Positive numbers only");
 				System.out.println("Try again between 1-20");
 				num = input.nextLong();
-				// is BigInteger allowed?
 			} else if (num > 20) {
 				System.out.println("Too large to print");
 				System.out.println("Try again between 1-20");
 				num = input.nextLong();
+				// asking for input between 1-20. If they fail it. i ask again.
 			}
 
 		}
@@ -100,6 +102,7 @@ public class Conditionals {
 		{
 			fact = fact * i;
 		}
+		//making the calculation for the factorial
 		System.out.println("The factorial of " + num + " is " + fact);
 
 		System.out.println("Assignment Two Part One Task Four");
@@ -110,10 +113,14 @@ public class Conditionals {
 		String[] operations = { "+", "-", "*" };
 		int minOp = 0;
 		int maxOp = 3;
+		//using arrays for generating random operations.
 		int count = 10;
+		//it will help me to define the number of questions that will be asked
 		int score = 0;
+		//this is the score result for end
 		int firstNum;
 		int secondNum;
+		//defining the elements so we can use that later on bottom with order that being firstNum > secondNum
 		boolean elimination = false;
 		switch (difficulty) 
 		{
@@ -127,19 +134,25 @@ public class Conditionals {
 		case 2:
 			count = 100;
 			break;
+			//using it like this so count for 1 will be included for 3 as well and count 2 will be included for case 4.
 		default:
 			System.out.println("Not a valid number of difficulty. Please Try again between 1-4...");
 			difficulty = input.nextInt();
+			//asking to user again in case if they don't define it between 1-4
 		}
 		if (elimination) {
 			int counter = 0;
+			//it will help me to count the number of question
 			while (elimination == true) 
+				//this part is only for elimination
 			{
 
 				counter++;
 				int operation = (int) ((Math.random() * (maxOp - minOp)) + minOp);
+				//generating random operation
 				int rngOne = rand.nextInt((count) + 1);
 				int rngTwo = rand.nextInt((count) + 1);
+				//generating random number with rand.nextInt
 
 				if (rngTwo > rngOne) 
 				{
@@ -149,14 +162,18 @@ public class Conditionals {
 				{
 					firstNum = rngOne;
 					secondNum = rngTwo;
+					//I did this so rngOne can always be greater than rngTwo.
 				}
 
 				System.out.println("Question " + counter + " what is " + firstNum + operations[operation] + secondNum + " = ");
 				int solution = operation == 0 ? (firstNum) + (secondNum) : operation == 1 ? (firstNum) - (secondNum) : operation == 2 ? (firstNum) * (secondNum) : 0;
+				//to use random operations I did a sentence like this in Lab Class.
+				//this is basically if, if else, else in just one sentence.
 				int answer = input.nextInt();
 
 				if (solution == answer) 
 				{
+					//adding one to score everytime user make it correct
 					score++;
 					continue;
 				} 
@@ -189,7 +206,7 @@ public class Conditionals {
 				if (solution == answer) {
 					score++;
 				}
-
+				//this side is basically same with the elimination part it doesn't get into loop after every correct answer. Instead it is just limited with the count (10 or 100)
 			}
 			System.out.println("Congrats you got " + score + "/10 correct answers");
 		}
