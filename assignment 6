@@ -1,0 +1,40 @@
+package griffith;
+import java.util.ArrayList;
+public class Test {
+
+	public static void main(String[] args) {
+
+		        ArrayList<String> lines = new ArrayList<>();
+		        lines.add("today is monday");
+		        lines.add("yesterday was saturday.");
+		        lines.add("There is a month left");
+		        lines.add("  Where is he?  ");
+
+		        System.out.println("Original sentences:");
+		        for (String sentence : lines) {
+		            System.out.println(sentence);
+		        }
+
+		        fixed(lines);
+		        
+		        System.out.println("");
+		        System.out.println("Edited sentences:");
+		        for (String sentence : lines) {
+		            System.out.println(sentence);
+		        }
+		    }
+
+		    public static void fixed(ArrayList<String> lines) {
+		        for (int i = 0; i < lines.size(); i++) {
+		            String sentence = lines.get(i);
+		            sentence = sentence.trim(); // remove extra whitespace at start or end
+		            char lastChar = sentence.charAt(sentence.length() - 1);
+		            if (lastChar > 'A' && lastChar < 'z'){
+		            	sentence += ".";
+		            	// sentence already ends with punctuation
+		            }
+		            sentence = sentence.substring(0, 1).toUpperCase() + sentence.substring(1); // capitalize first letter
+		            lines.set(i, sentence);
+		        }
+		    }
+	}
