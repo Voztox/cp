@@ -1,0 +1,5 @@
+Bread: 2.15
+French Fries: 2.35
+Cauliflower: 3.15
+Milk: 1.16
+Total: 8.81
